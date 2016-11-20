@@ -7,13 +7,13 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import routes from './routes';
-import NotFoundPage from '.components/NotFoundPage';
+import NotFoundPage from './components/NotFoundPage';
 
 
 //initialize server, add support for ejs
 const app = new Express();
 const server = new Server(app);
-app.set('view-engine', 'ejs');
+app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 //define folder for static assets
@@ -53,9 +53,9 @@ app.get('*', (req, res) => {
 
 const port = process.env.PORT || 3000;
 const env = process.env.NODE_ENV || 'production';
-server.listen(port, err) => {
+server.listen(port, (err) => {
     if(err) {
         return console.error(err);
     }
     console.info(`Server running on http://localhost:${port} [${env}]`);
-}
+});
